@@ -1,7 +1,5 @@
 <script lang="ts">
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcomeFallback from '$lib/images/svelte-welcome.png';
+	import hero from '$lib/images/hero.svg';
 </script>
 
 <svelte:head>
@@ -9,26 +7,31 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-<section>
-	<h1>
+<section
+	class="h-screen flex items-center justify-center">
+  <!-- <h1 class="text-white text-4xl">Welcome to My Starry Sky Landing Page</h1> -->
+
+	<h1  class="text-white text-4xl">
 		<span class="welcome">
 			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcomeFallback} alt="Welcome" />
+				<img src={hero} alt="goslel illastration" class="w-[2em] h-[2em]" />
 			</picture>
 		</span>
 
-		to your new<br />SvelteKit app
+		This gospel of the kingdom will be  <br /> preached in the whole world 
+
 	</h1>
 
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
+	<h2  class="text-white ">
+		 <strong>Matthew 24:14</strong>
+	</h2>	
+</section>
+<section>
 
-	<Counter />
 </section>
 
 <style>
+	
 	section {
 		display: flex;
 		flex-direction: column;
