@@ -1,129 +1,140 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import logo from '$lib/images/svelte-logo.svg';
-	import github from '$lib/images/github.svg';
+  import { fly } from 'svelte/transition';
+  import { page } from '$app/stores';
+  import logo from '$lib/images/svelte-logo.svg';
+  import github from '$lib/images/github.svg';
+
+  let isMobileMenuOpen = false;
+  let lastScrollY = 0;
+
+  function handleScroll() {
+    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const header = document.querySelector('.header') as HTMLElement | null;
+
+    if (header) {
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        header.style.transform = 'translateY(-100%)';
+      } else {
+        // Scrolling up
+        header.style.transform = 'translateY(0)';
+      }
+    }
+
+    lastScrollY = currentScrollY;
+    // Consider adding a throttle or debounce to prevent excessive function calls
+  }
 </script>
 
-<header>
-	<div class="corner">
-		<a href="https://svelte.dev/docs/kit">
-			<img src={logo} alt="SvelteKit" />
-		</a>
-	</div>
+<svelte:window on:scroll={handleScroll} />
 
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
-				<a href="/">Home</a>
-			</li>
-			<li aria-current={$page.url.pathname === '/about' ? 'page' : undefined}>
-				<a href="/about">About</a>
-			</li>
-			<li aria-current={$page.url.pathname.startsWith('/sverdle') ? 'page' : undefined}>
-				<a href="/sverdle">Sverdle</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
+<header class="header">
+  <div class="logo">
+    <img src="/Remove-bg.ai_1732487706401.png" alt="SvelteKit" class="w-[2em] h-[2em]" />
+  </div>
 
-	<div class="corner">
-		<a href="https://github.com/sveltejs/kit">
-			<img src={github} alt="GitHub" />
-		</a>
-	</div>
+  <nav class="nav">
+    <a href="/" class:active={$page.url.pathname === '/'}>Home</a>
+    <a href="/about" class:active={$page.url.pathname === '/about'}>About</a>
+    <a href="/chapters" class:active={$page.url.pathname === '/chapters'}>Chapters</a>
+    <a href="/resources" class:active={$page.url.pathname === '/resources'}>Resources</a>
+    <a href="/contact" class:active={$page.url.pathname === '/contact'}>Contact</a>
+  </nav>
+
+  <div class="search">
+    <input type="text" placeholder="Search..." />
+  </div>
+
+  <!-- Mobile Menu Toggle -->
+  <button class="menu-toggle" on:click={() => isMobileMenuOpen = !isMobileMenuOpen}>
+    <svg viewBox="0 0 24 24" width="24" height="24">
+      <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+    </svg>
+  </button>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" class:open={isMobileMenuOpen}>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/chapters">Chapters</a>
+    <a href="/resources">Resources</a>
+    <a href="/contact">Contact</a>
+  </div>
 </header>
 
 <style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+  }
 
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
+  .header.hide {
+    transform: translateY(-100%);
+  }
 
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
+  .logo a {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+  }
 
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
+  .nav a {
+    margin-left: 1rem;
+    color: white;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+  }
 
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
+  .nav a:hover, .nav a.active {
+    text-decoration: underline;
+  }
 
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
+  .search input {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+  }
 
-	path {
-		fill: var(--background);
-	}
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
 
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
+  .mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #333;
+    padding: 1rem;
+    border-radius: 4px;
+  }
 
-	li {
-		position: relative;
-		height: 100%;
-	}
+  .mobile-menu.open {
+    display: block;
+  }
 
-	li[aria-current='page']::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--color-theme-1);
-	}
+  @media (max-width: 768px) {
+    .nav {
+      display: none;
+    }
 
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 0.5rem;
-		color: var(--color-text);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--color-theme-1);
-	}
+    .menu-toggle {
+      display: block;
+    }
+  }
 </style>
