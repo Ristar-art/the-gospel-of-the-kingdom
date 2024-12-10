@@ -2,85 +2,69 @@
     import hero from "$lib/images/hero.svg";
 
     let referenceElement: HTMLElement;
-    
-    
 </script>
 
-<section class="min-h-screen mt-12 flex flex-col md:flex-row justify-center items-center p-8">
-    <div class="md:w-1/2 text-left ">
-        <h1 class="text-3xl md:text-6xl font-bold text-gray-800 mb-6 leading-tight text-left">
-            Explore the gospel in the context of the Judgement.
+<section class="min-h-screen   flex flex-col md:flex-row justify-between items-center px-8 py-12 bg-gradient-to-br from-blue-50 to-blue-100">
+    <div class="md:w-1/2">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-teal-400 mb-6 leading-tight">
+            Explore the Gospel in the Context of Judgement
         </h1>
-        <h1 class=" w-full md:w-2/3 text-xl text-black mb-4 leading-snug text-left">
-            We will be going through the book of Daniel and the book of Revelation,the background of the cosmic conflict and the implications of harmful doctrines.
-        </h1>
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Explre
+        <p class="text-lg md:text-xl text-gray-700 mb-8 leading-relaxed">
+            Dive into the book of Daniel and Revelation, uncovering the cosmic conflict and exploring the implications of harmful doctrines.
+        </p>
+        <button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+            <a href="/Explore">
+            Explore
+            </a>
         </button>
-        
     </div>
-    <div class="md:w-1/2 flex justify-center items-center ">
+    <div class="md:w-1/2 flex justify-center items-center">
         <div class="relative">
-            <h1 class=" text-gray-700 mb-4 leading-snug">
-                <span class="welcome inline-block ">
-                    <picture>
-                        <img
-                            bind:this={referenceElement}
-                            src={hero}
-                            alt="gospel illustration"
-                            class="w-[30em] h-[12em] floating-hero  object-contain"
-                        />
-                    </picture>
-                </span>
-                <br />This gospel of the kingdom will be <br /> preached in the whole world
-            </h1>
-            <h2 class=" text-gray-600 mt-4 text-center ">
-                <strong>Matthew 24:14</strong>
+            <picture>
+                <img
+                    bind:this={referenceElement}
+                    src={hero}
+                    alt="gospel illustration"
+                    class="w-[30em] md:w-[40em] h-auto floating-hero object-contain drop-shadow-xl"
+                />
+            </picture>
+            <h2 class="text-gray-600 text-center mt-6 text-lg md:text-xl">
+                <strong>Matthew 24:14</strong>: "This gospel of the kingdom will be preached in the whole world."
             </h2>
         </div>
     </div>
 </section>
-<section class="py-8 md:py-20">
-     <h1 class="text-2xl text-black md:text-3xl font-bold tracking-tighter sm:text-5xl mt-6">
-        See why the theam of the book of Daniel and  the book of <br/> Revelation is Judgement betewwn two kingdoms.
+
+<section class="py-16 bg-gradient-to-br from-blue-50 to-blue-100">
+    <h1 class="text-3xl md:text-5xl font-extrabold text-center text-gray-800 leading-tight mb-6">
+        The Judgement Between Two Kingdoms
     </h1>
-    <h3 class=" text-black  text-center">
-        The kingdom of heaven is made up of the poeple in it, and the kingdom of <br/>  the beast is made up of the governments of this world.
-    </h3>
-    <div class="w-full md:w-[80rem] mx-auto rounded-xl">
-        <div class="flex justify-between">
-            <div class="rounded-xl w-[30rem]">
-                <img
-                    src="/06b53174fc4c8998642b532779f9b665.jpg"
-                    alt=""
-                    class="w-full h-full object-cover"
-                />
-            </div>
-            <div class="w-[30rem] flex self-center flex-col">
-                <picture class="flex justify-center">
-                    <img src="/Remove-bg.ai_1732478868234.png" alt="" class="w-48 h-48" />
-                </picture>
-            </div>
-            <div class="flex justify-between">
-                <div class="rounded-xl w-[30rem]">
-                    <img
-                        src="/8c2e4034ff4ffb27b3992d54428b4edc.jpg"
-                        alt=""
-                        class="w-full h-full object-cover"
-                    />
-                </div>
-            </div>
+    <p class="text-lg text-gray-600 text-center mb-12">
+        The kingdom of heaven consists of its people, while the kingdom of the beast represents the governments of this world.
+    </p>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="rounded-xl overflow-hidden shadow-lg transition-transform transform hover:scale-105">
+            <img src="/06b53174fc4c8998642b532779f9b665.jpg" alt="Kingdom of Heaven" class="w-full h-48 object-cover" />
+        </div>
+        <div class="flex flex-col items-center justify-center">
+            <picture>
+                <img src="/Remove-bg.ai_1732478868234.png" alt="Judgement Symbol" class="w-48 h-48 rounded-full shadow-lg" />
+            </picture>
+        </div>
+        <div class="rounded-xl overflow-hidden shadow-lg transition-transform transform hover:scale-105">
+            <img src="/8c2e4034ff4ffb27b3992d54428b4edc.jpg" alt="Kingdom of the Beast" class="w-full h-48 object-cover" />
         </div>
     </div>
 </section>
-<section class="py-8 md:py-20">
-     <h1 class="text-2xl text-black md:text-3xl font-bold tracking-tighter sm:text-5xl mt-6">
-        Thoughts on the Mart of the Beast
-    </h1>
-    
-    
-</section>
 
+<section class="py-16 bg-gradient-to-br from-gray-100 to-gray-200">
+    <h1 class="text-3xl md:text-5xl font-extrabold text-center text-gray-800 mb-6">
+        Thoughts on the Mark of the Beast
+    </h1>
+    <p class="text-lg text-gray-600 text-center">
+        Explore the implications of the mark of the beast and its relevance to our spiritual journey and choices.
+    </p>
+</section>
 
 <style>
     .floating-hero {
@@ -99,5 +83,3 @@
         }
     }
 </style>
-
-

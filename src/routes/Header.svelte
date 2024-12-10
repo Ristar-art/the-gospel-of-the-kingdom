@@ -36,8 +36,8 @@
   <nav class="nav">
     <a href="/" class:active={$page.url.pathname === '/'}>Home</a>
     <a href="/about" class:active={$page.url.pathname === '/about'}>About</a>
-    <a href="/chapters" class:active={$page.url.pathname === '/chapters'}>Chapters</a>
-    <a href="/resources" class:active={$page.url.pathname === '/resources'}>Resources</a>
+    <a href="/chapters" class:active={$page.url.pathname === '/chapters'}>Videos</a>
+    <a href="/resources" class:active={$page.url.pathname === '/resources'}>Books</a>
     <a href="/contact" class:active={$page.url.pathname === '/contact'}>Contact</a>
   </nav>
 
@@ -56,8 +56,8 @@
   <div class="mobile-menu" class:open={isMobileMenuOpen}>
     <a href="/">Home</a>
     <a href="/about">About</a>
-    <a href="/chapters">Chapters</a>
-    <a href="/resources">Resources</a>
+    <a href="/chapters">Videos</a>
+    <a href="/resources">Books</a>
     <a href="/contact">Contact</a>
   </div>
 </header>
